@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
-import { products } from '../products';
 import { CommonModule } from '@angular/common';
 import { ProductAlertsComponent } from '../product-alerts/product-alerts.component';
+import { products } from '../products';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, ProductAlertsComponent],
+  imports: [CommonModule, ProductAlertsComponent]
 })
 export class ProductListComponent {
   products = [...products];

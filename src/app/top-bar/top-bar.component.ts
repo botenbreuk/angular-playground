@@ -6,6 +6,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss'],
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink]
 })
 export class TopBarComponent {}

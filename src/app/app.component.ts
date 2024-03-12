@@ -7,7 +7,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
   standalone: true,
   imports: [RouterOutlet, TopBarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'angular-playground';

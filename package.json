@@ -20,11 +20,14 @@
     "@angular/cli": "17.2.3",
     "@angular/compiler-cli": "17.2.4",
     "@types/node": "20.11.26",
+    "prettier": "3.2.5",
+    "prettier-plugin-organize-imports": "3.2.4",
     "typescript": "5.3.3"
   },
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
+    "prettier": "prettier --write ./src",
     "watch": "ng build --watch --configuration development"
   }
 }
