@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { ProductAlertsComponent } from '../product-alerts/product-alerts.component';
 import { products } from '../products';
 
@@ -9,7 +10,7 @@ import { products } from '../products';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, ProductAlertsComponent]
+  imports: [RouterLink, CommonModule, ProductAlertsComponent]
 })
 export class ProductListComponent {
   products = [...products];

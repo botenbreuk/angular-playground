@@ -20,6 +20,8 @@
     "@angular/cli": "17.2.3",
     "@angular/compiler-cli": "17.2.4",
     "@types/node": "20.11.26",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-organize-imports": "3.2.4",
     "typescript": "5.3.3"
@@ -29,5 +31,10 @@
     "build": "ng build",
     "prettier": "prettier --write ./src",
     "watch": "ng build --watch --configuration development"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.{js,jsx,json,scss,tsx,ts}": [
+      "prettier --single-quote --write"
+    ]
   }
 }
