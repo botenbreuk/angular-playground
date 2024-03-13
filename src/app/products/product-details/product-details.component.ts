@@ -1,6 +1,9 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Product, products } from '../products';
+import { CartService } from '../../cart/cart.service';
+import { ProductComponent } from '../product.component';
+import { ProductService } from '../product.service';
+import { Product } from '../products';
 
 @Component({
   selector: 'app-product-details',
@@ -9,11 +12,17 @@ import { Product, products } from '../products';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent extends ProductComponent {
   product?: Product;
 
+  constructor(cartService: CartService, productService: ProductService) {
+    super(cartService, productService);
+  }
+
   @Input()
-  set productId(id: string) {
-    this.product = products.find(v => v.id === Number(id));
+  set productId(id: number) {
+    this.productService.findById(id).subscribe(product => {
+      this.product = product;
+    });
   }
 }

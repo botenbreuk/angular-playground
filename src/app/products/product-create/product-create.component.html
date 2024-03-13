@@ -1,0 +1,18 @@
+<p>product-create works!</p>
+<h1>TEST</h1>
+
+<form [formGroup]="createProductForm" (ngSubmit)="onSave()">
+  <div>
+    <label>Product name</label>
+    <input formControlName="name" type="text" />
+  </div>
+  <div>
+    <label>Product description</label>
+    <input formControlName="description" type="text" />
+  </div>
+  <div>
+    <label>Product price</label>
+    <input formControlName="price" type="number" />
+  </div>
+  <button class="btn btn-success">Create</button>
+</form>

@@ -12,5 +12,6 @@
   }
 
   <button type="button" (click)="share()">Share</button>
+  <button type="button" (click)="addToCart(product)">Add to cart</button>
   <app-product-alerts [product]="product" (notify)="onNotify()" />
 }

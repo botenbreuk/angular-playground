@@ -1,0 +1,21 @@
+<h3>Cart</h3>
+<button (click)="clearCart()">Clear Cart</button>
+
+<div class="cart-item" *ngFor="let product of getProducts()">
+  <span>{{ product.name }}</span>
+  <span>{{ product.price | currency }}</span>
+</div>
+
+<form [formGroup]="cartForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+
+  <button class="btn btn-primary">Submit form</button>
+</form>
