@@ -1,5 +1,21 @@
-<a [routerLink]="['/']">
-  <h1>My Store</h1>
-</a>
-
-<a class="button fancy-button"><em class="material-icons">shopping_cart</em>Checkout </a>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    routerLink="/"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+  <span> My Store </span>
+  <span class="example-spacer"></span>
+  <button
+    mat-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    routerLink="/cart"
+  >
+    <mat-icon>shopping_cart</mat-icon>
+    Checkout
+  </button>
+</mat-toolbar>

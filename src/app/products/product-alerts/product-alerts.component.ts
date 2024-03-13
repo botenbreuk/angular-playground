@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { Product } from '../products';
 
 @Component({
@@ -8,7 +9,7 @@ import { Product } from '../products';
   templateUrl: './product-alerts.component.html',
   styleUrl: './product-alerts.component.scss',
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, MatButtonModule]
 })
 export class ProductAlertsComponent {
   @Input() product?: Product;
