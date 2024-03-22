@@ -1,0 +1,27 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+
+  .form {
+    background-color: hsl(0, 0%, 35%);
+    border-radius: 0.5rem;
+    padding: 3rem;
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+
+    h1 {
+      text-align: center;
+    }
+
+    .error {
+      margin-top: 1rem;
+      border: 1px solid hsl(0, 100%, 33%);
+      border-radius: 0.5rem;
+      color: hsl(0, 100%, 33%);
+      padding: 1rem;
+      font-weight: bold;
+      background-color: rgb(240, 196, 196);
+    }
+  }
+}

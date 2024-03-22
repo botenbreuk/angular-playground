@@ -17,8 +17,10 @@
         }
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="share()">Share</button>
-        <app-product-alerts [product]="product" (notify)="onNotify()" />
+        <div style="display: flex; gap: 1rem">
+          <button mat-raised-button color="primary" (click)="share()">Share</button>
+          <app-product-alerts [product]="product" (notify)="onNotify()" />
+        </div>
       </mat-card-actions>
     </mat-card>
   }

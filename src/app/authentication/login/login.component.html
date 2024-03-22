@@ -1,0 +1,33 @@
+<div class="login-container">
+  <div class="form">
+    <h1>Log in</h1>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        name="username"
+        [type]="'text'"
+        [formControl]="username"
+        (blur)="resetErrors()"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        name="password"
+        [type]="'password'"
+        [formControl]="password"
+        (blur)="resetErrors()"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+    @if (error) {
+      <div class="error">
+        {{ error }}
+      </div>
+    }
+  </div>
+</div>

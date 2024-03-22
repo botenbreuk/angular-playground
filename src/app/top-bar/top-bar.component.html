@@ -9,6 +9,14 @@
   </button>
   <span> My Store </span>
   <span class="example-spacer"></span>
+  <div style="display: flex; gap: 1rem">
+    @if (authenticated) {
+      <span>Hello {{ curerentUser?.name }}</span>
+      <button mat-raised-button (click)="logout()">Logout</button>
+    } @else {
+      <button mat-raised-button routerLink="/login">Login</button>
+    }
+  </div>
   <button
     mat-button
     class="example-icon"
