@@ -1,7 +1,30 @@
-<a [routerLink]="['/']">
-  <h1>My Store</h1>
-</a>
-
-<a routerLink="/cart" class="button fancy-button"
-  ><em class="material-icons">shopping_cart</em>Checkout
-</a>
+<mat-toolbar color="primary">
+  <button
+    mat-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    routerLink="/"
+  >
+    Home
+  </button>
+  <button
+    mat-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    routerLink="/products/create"
+  >
+    Create product
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    routerLink="/cart"
+  >
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  @if (isAuthenticated) {
+    <p>Welcome, {{ currentUser.name }}</p>
+    <p>Email: {{ currentUser.email }}</p>
+  }
+</mat-toolbar>

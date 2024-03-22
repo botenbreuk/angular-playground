@@ -2,16 +2,16 @@
 /* Global Styles */
 
 * {
-  font-family: 'Roboto', Arial, sans-serif;
-  color: #adadad;
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
-  background-color: #1f1f1f;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 .container {
@@ -112,21 +112,21 @@ button:disabled {
 
 /* Top Bar */
 
-app-top-bar {
-  width: 100%;
-  height: 68px;
-  background-color: #1976d2;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+// app-top-bar {
+//   width: 100%;
+//   height: 68px;
+//   background-color: #1976d2;
+//   padding: 16px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
 
-  h1 {
-    color: white;
-    margin: 0;
-  }
-}
+//   h1 {
+//     color: white;
+//     margin: 0;
+//   }
+// }
 
 /* Checkout Cart, Shipping Prices */
 

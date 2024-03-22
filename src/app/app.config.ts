@@ -7,10 +7,11 @@ import {
   withXsrfConfiguration
 } from '@angular/common/http';
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withFetch(), withXsrfConfiguration({ headerName: 'X-XSRF-TOKEN' }))
+    provideHttpClient(withFetch(), withXsrfConfiguration({ headerName: 'X-XSRF-TOKEN' })), provideAnimationsAsync()
   ]
 };

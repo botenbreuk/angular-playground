@@ -1,17 +1,28 @@
-<h2>Products</h2>
-
-@for (product of products; track products) {
-  <h3>
-    <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
-      {{ product.name }}
-    </a>
-  </h3>
-
-  @if (product.description) {
-    <p>Description: {{ product.description }}</p>
+<div class="cards">
+  @for (product of products; track $index) {
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <a
+            mat-button
+            color="primary"
+            [title]="product.name + ' details'"
+            [routerLink]="['/products', product.id]"
+          >
+            {{ product.name }}
+          </a>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        @if (product.description) {
+          <p>Description: {{ product.description }}</p>
+        }
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="addToCart(product)">
+          Add to cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
   }
-
-  <button type="button" (click)="share()">Share</button>
-  <button type="button" (click)="addToCart(product)">Add to cart</button>
-  <app-product-alerts [product]="product" (notify)="onNotify()" />
-}
+</div>
