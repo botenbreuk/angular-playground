@@ -1,17 +1,19 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Product } from '../../products/products';
 import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [CurrencyPipe, RouterLink],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  templateUrl: './cart.component.html'
 })
 export class CartComponent {
-  private cartService = inject(CartService);
+  items!: Product[];
 
-  items = this.cartService.getItems();
+  constructor(cartService: CartService) {
+    this.items = cartService.getItems();
+  }
 }

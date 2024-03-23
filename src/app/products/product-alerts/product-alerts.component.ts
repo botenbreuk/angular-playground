@@ -7,7 +7,6 @@ import { Product } from '../products';
 @Component({
   selector: 'app-product-alerts',
   templateUrl: './product-alerts.component.html',
-  styleUrl: './product-alerts.component.scss',
   standalone: true,
   imports: [FormsModule, CommonModule, MatButtonModule]
 })

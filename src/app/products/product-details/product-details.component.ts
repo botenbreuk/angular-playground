@@ -8,8 +8,7 @@ import { Product, products } from '../products';
   selector: 'app-product-details',
   standalone: true,
   imports: [CurrencyPipe, MatButtonModule],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss'
+  templateUrl: './product-details.component.html'
 })
 export class ProductDetailsComponent {
   private cartService = inject(CartService);
