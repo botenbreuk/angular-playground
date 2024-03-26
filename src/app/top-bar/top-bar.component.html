@@ -1,30 +1,29 @@
 <mat-toolbar color="primary">
   <button
-    mat-button
+    mat-icon-button
     class="example-icon"
-    aria-label="Example icon-button with share icon"
+    aria-label="Example icon-button with menu icon"
     routerLink="/"
   >
-    Home
+    <mat-icon>home</mat-icon>
   </button>
+  <span> My Store </span>
+  <span class="example-spacer"></span>
+  <div style="display: flex; gap: 1rem">
+    @if (authenticated) {
+      <span>Hello {{ currentUser?.firstName }}</span>
+      <button mat-raised-button (click)="logout()">Logout</button>
+    } @else {
+      <button mat-raised-button routerLink="/login">Login</button>
+    }
+  </div>
   <button
     mat-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-    routerLink="/products/create"
-  >
-    Create product
-  </button>
-  <button
-    mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with share icon"
     routerLink="/cart"
   >
     <mat-icon>shopping_cart</mat-icon>
+    Checkout
   </button>
-  @if (isAuthenticated) {
-    <p>Welcome, {{ currentUser.name }}</p>
-    <p>Email: {{ currentUser.email }}</p>
-  }
 </mat-toolbar>

@@ -1,3 +1,10 @@
+<button mat-raised-button color="primary" (click)="getCurrentUser()">current</button>
+<button mat-raised-button color="primary" (click)="logout()">logout</button>
+@if (currentUser) {
+  <div>Hallo {{ currentUser.firstName | json }}</div>
+} @else {
+  <div>Kan de gebruiker niet vinden man</div>
+}
 <div class="cards">
   @for (product of products; track $index) {
     <mat-card>

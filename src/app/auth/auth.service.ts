@@ -1,40 +1,56 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private api: string;
+  private api: string = '/api';
+  private currentUser?: User;
+  private isAuthenticated: boolean = false;
 
-  constructor(private http: HttpClient) {
-    this.api = '/api';
-  }
+  constructor(private http: HttpClient) {}
 
+  // Login method
   login(credentials: { username: string; password: string }): Observable<User> {
-    console.log(credentials);
     return this.http.post<User>(this.api + '/authentication', credentials);
   }
 
-  authenticated(): Observable<boolean> {
-    return this.http
-      .get<boolean>('/authentication/current')
-      .pipe(map((authResult: any) => !!authResult.user));
+  setCurrentUser(user: User): void {
+    this.currentUser = user;
+    this.isAuthenticated = true;
   }
 
-  setUser(user: User) {
-    return this.http.post(this.api + '/authentication/current', user);
+  // Fetch the current user
+  fetchCurrentUser(): Observable<User> {
+    return this.http.get<User>(this.api + '/authentication/current').pipe(
+      tap(user => {
+        this.currentUser = user;
+        this.isAuthenticated = true;
+      })
+    );
   }
 
-  //get the current user from the backend and return it using /current
-  getCurrentUser(): Observable<any> {
-    return this.http.get<any>(this.api + '/authentication/current');
+  // Get the current user
+  getCurrentUser(): User | undefined {
+    return this.currentUser;
   }
 
-  //logout the current user
-  logout() {
-    return this.http.post(this.api + '/logout', {});
+  // Logout method
+  logout(): Observable<void> {
+    return this.http.delete<void>(this.api + '/authentication').pipe(
+      tap(() => {
+        this.currentUser = undefined;
+        this.isAuthenticated = false;
+      })
+    );
+  }
+
+  // Check if user is authenticated
+  isAuthenticatedUser(): boolean {
+    return this.isAuthenticated;
   }
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user';
 
 @Component({
   selector: 'app-top-bar',
@@ -12,29 +13,29 @@ import { AuthService } from '../auth/auth.service';
   standalone: true,
   imports: [RouterLink, MatToolbarModule, MatButtonModule, MatIconModule]
 })
-export class TopBarComponent implements OnInit {
-  isAuthenticated: boolean = false;
-  currentUser: any;
+export class TopBarComponent implements AfterContentChecked, OnInit {
+  currentUser?: User;
+  authenticated: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngAfterContentChecked(): void {
+    this.authenticated = this.authService.isAuthenticatedUser();
+  }
+
   ngOnInit(): void {
-    this.authService.authenticated().subscribe(
-      (authenticated: boolean) => {
-        this.isAuthenticated = authenticated;
-        if (authenticated) {
-          this.authService.getCurrentUser().subscribe(
-            (user: any) => {
-              this.currentUser = user;
-            },
-            error => {
-              console.error('Error getting current user:', error);
-            }
-          );
-        }
-      },
-      error => {
-        console.error('Error checking authentication status:', error);
-      }
-    );
+    this.currentUser = this.authService.getCurrentUser();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
+  }
+
+  share() {
+    window.alert('The product has been shared!');
   }
 }

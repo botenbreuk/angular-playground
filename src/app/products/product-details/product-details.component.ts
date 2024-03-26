@@ -1,6 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CartService } from '../../cart/cart.service';
+import { AuthService } from '../../auth/auth.service';
+import { CartService } from '../../ordering/cart/cart.service';
 import { ProductComponent } from '../product.component';
 import { ProductService } from '../product.service';
 import { Product } from '../products';
@@ -15,8 +16,13 @@ import { Product } from '../products';
 export class ProductDetailsComponent extends ProductComponent {
   product?: Product;
 
-  constructor(cartService: CartService, productService: ProductService) {
-    super(cartService, productService);
+  constructor(
+    cartService: CartService,
+    productService: ProductService,
+    authService: AuthService
+  ) {
+    super(cartService, productService, authService);
+    console.log(authService.getCurrentUser);
   }
 
   @Input()

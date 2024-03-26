@@ -5,8 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
+import { CartService } from '../../ordering/cart/cart.service';
 import { ProductAlertsComponent } from '../product-alerts/product-alerts.component';
 import { ProductComponent } from '../product.component';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -23,11 +26,11 @@ import { ProductComponent } from '../product.component';
   ]
 })
 export class ProductListComponent extends ProductComponent {
-  share() {
-    window.alert('The product has been shared!');
-  }
-
-  onNotify() {
-    window.alert('You will be notified when the product goes on sale');
+  constructor(
+    cartService: CartService,
+    productService: ProductService,
+    authService: AuthService
+  ) {
+    super(cartService, productService, authService);
   }
 }

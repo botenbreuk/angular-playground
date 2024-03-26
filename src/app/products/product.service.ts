@@ -22,8 +22,6 @@ export class ProductService {
   }
 
   public save(product?: Product) {
-    console.log(product);
-
     return this.http.post<Product>(this.productUrl, { ...product });
   }
 }
